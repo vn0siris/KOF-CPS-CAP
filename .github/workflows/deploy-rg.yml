@@ -9,7 +9,7 @@ env:
   AZURE_REGION: eastus2
   TAG_01CeCo: TEST
   TAG_02NumeroPPM: 234234
-  TAG_03Nombre_aplicacion: CPS Biceps test
+  TAG_03Nombre_aplicacion: "CPS Biceps test"
   TAG_04Ambiente: PRD
   TAG_05Solicitante_Financiero: Cloud Project Services
   TAG_06Solicitante_TI: Cloud Project Services
