@@ -4,7 +4,8 @@ on: workflow_dispatch
 
 env:
   AZURE_RG: RG-POC-BICEPS-CPS
-  AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
+  #AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
+  AZURE_SUBSCRIPTION: 7e57c5fe-4cac-43c5-868d-a79f131a3203
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
   AZURE_REGION: eastus2
   TAG_01CeCo: TEST
@@ -37,4 +38,4 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az group create --subscription 7e57c5fe-4cac-43c5-868d-a79f131a3203 --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}"
+          az group create --subscription ${{ env.AZURE_SUBSCRIPTION }} --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}"
