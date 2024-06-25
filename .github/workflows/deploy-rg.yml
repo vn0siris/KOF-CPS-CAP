@@ -11,9 +11,9 @@ env:
   TAG_02NumeroPPM: 234234
   TAG_03Nombre_aplicacion: "CPS Biceps test"
   TAG_04Ambiente: PRD
-  TAG_05Solicitante_Financiero: Cloud Project Services
-  TAG_06Solicitante_TI: Cloud Project Services
-  TAG_07Usuario_Solicitante.: Cloud Project Services
+  TAG_05Solicitante_Financiero: "Cloud Project Services"
+  TAG_06Solicitante_TI: "Cloud Project Services"
+  TAG_07Usuario_Solicitante.: "Cloud Project Services"
   TAG_08Fecha_creacion: 25-06-24
   TAG_09IP_Privada: N/A
   TAG_10Criticidad: Alto
@@ -37,4 +37,4 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az group create --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}"
+          az group create --subscription 7e57c5fe-4cac-43c5-868d-a79f131a3203 --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}"
