@@ -15,7 +15,7 @@ env:
   TAG_05Solicitante_Financiero: "Cloud Project Services"
   TAG_06Solicitante_TI: "Cloud Project Services"
   TAG_07Usuario_Solicitante: "Cloud Project Services"
-  TAG_08Fecha_creacion: 25-06-24
+  TAG_08Fecha_creacion: "25-06-24"
   TAG_09IP_Privada: N/A
   TAG_10Criticidad: Alto
   TAG_11Disponibilidad: Alto
