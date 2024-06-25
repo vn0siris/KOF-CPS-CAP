@@ -38,4 +38,12 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az group create --subscription ${{ env.AZURE_SUBSCRIPTION }} --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}"
+          az group create --subscription ${{ env.AZURE_SUBSCRIPTION }} --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --set tags.CostCenter=
+          '{ 
+          01CeCo=${{ env.TAG_01CeCo }} 
+          02NumeroPPM=${{ env.TAG_02NumeroPPM }} 
+          "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 
+          04Ambiente=${{ env.TAG_04Ambiente }} 
+          "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}"
+          "06Solicitante TI"="${{ env.TAG_06Solicitante_TI }}"
+          }'
