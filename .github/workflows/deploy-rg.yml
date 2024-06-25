@@ -37,4 +37,4 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az group create --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"=${{ env.TAG_03Nombre_aplicacion }}
+          az group create --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}"
