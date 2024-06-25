@@ -7,6 +7,7 @@ env:
   AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
   AZURE_REGION: eastus2
+  TAG_01CeCo: TEST
 
 jobs:
   deploy-bicep-template:
@@ -25,4 +26,4 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az group create --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  
+          az group create --location ${{ env.AZURE_REGION }} --name ${{ env.AZURE_RG }}  --tags 01CeCo=${{ env.TAG_01CeCo }}
