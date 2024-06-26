@@ -1,0 +1,43 @@
+name: 2 Deploy Storage Account
+
+on: workflow_dispatch
+
+env:
+  AZURE_SA_NAME: TEST
+  AZURE_RG: RG-POC-BICEPS-CPS
+  #AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
+  AZURE_SUBSCRIPTION: "ADFS Dirsync"
+  #AZURE_SUBSCRIPTION: 7e57c5fe-4cac-43c5-868d-a79f131a3203
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  AZURE_REGION: eastus2
+  TAG_01CeCo: TEST
+  TAG_02NumeroPPM: 234234
+  TAG_03Nombre_aplicacion: "CPS Biceps test"
+  TAG_04Ambiente: PRD
+  TAG_05Solicitante_Financiero: "Cloud Project Services"
+  TAG_06Solicitante_TI: "Cloud Project Services"
+  TAG_07Usuario_Solicitante: "Cloud Project Services"
+  TAG_08Fecha_creacion: "25-06-24"
+  TAG_09IP_Privada: N/A
+  TAG_10Criticidad: Alto
+  TAG_11Disponibilidad: Alto
+  TAG_12Confidencialidad: Alto
+
+jobs:
+  deploy-bicep-template:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout code
+    - uses: actions/checkout@main
+
+      # Log into Azure
+    - uses: azure/login@v2
+      with:
+        creds: ${{ env.AZURE_CREDENTIALS }}
+
+    - name: Create Storage Account
+      uses: azure/CLI@v2
+      with:
+        inlineScript: |
+          az storage account create --subscription "${{ env.AZURE_SUBSCRIPTION }}" --location ${{ env.AZURE_REGION }} ----resource-group ${{ env.AZURE_RG }}  --name ${{ env.AZURE_SA_NAME }}  --kind StorageV2 --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}" "06Solicitante TI"="${{ env.TAG_06Solicitante_TI }}" "07Usuario Solicitante"="${{ env.TAG_07Usuario_Solicitante }}" "08Fecha creacion"="${{ env.TAG_08Fecha_creacion }}" "09IP Privada"="${{ env.TAG_09IP_Privada }}" 10Criticidad="${{ env.TAG_10Criticidad }}" 11Disponibilidad="${{ env.TAG_11Disponibilidad }}" 12Confidencialidad="${{ env.TAG_12Confidencialidad }}"
