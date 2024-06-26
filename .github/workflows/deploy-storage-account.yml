@@ -3,7 +3,7 @@ name: 2 Deploy Storage Account
 on: workflow_dispatch
 
 env:
-  AZURE_SA_NAME: dikjasrnjiaksnjikansrjajna
+  AZURE_SA_NAME: dikjasrnjiaksnjika
   AZURE_RG: RG-POC-BICEPS-CPS
   #AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
   AZURE_SUBSCRIPTION: "ADFS Dirsync"
