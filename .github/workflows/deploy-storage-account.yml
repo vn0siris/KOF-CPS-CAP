@@ -3,7 +3,7 @@ name: 2 Deploy Storage Account
 on: workflow_dispatch
 
 env:
-  AZURE_SA_NAME: dikjasrnjiaksnjika
+  AZURE_SA_NAME: sapockofcloudprojbicep
   AZURE_RG: RG-POC-BICEPS-CPS
   #AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
   AZURE_SUBSCRIPTION: "ADFS Dirsync"
@@ -11,6 +11,7 @@ env:
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
   AZURE_REGION: eastus2
   SA_SKU: Standard_GRS
+  SA_KIND: StorageV2
   TAG_01CeCo: TEST
   TAG_02NumeroPPM: 234234
   TAG_03Nombre_aplicacion: "CPS Biceps test"
@@ -41,4 +42,4 @@ jobs:
       uses: azure/CLI@v2
       with:
         inlineScript: |
-          az storage account create --subscription "${{ env.AZURE_SUBSCRIPTION }}" --location ${{ env.AZURE_REGION }} --resource-group ${{ env.AZURE_RG }} --name ${{ env.AZURE_SA_NAME }} --public-network-access Disabled --kind StorageV2 --sku  ${{ env.SA_SKU }} --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}" "06Solicitante TI"="${{ env.TAG_06Solicitante_TI }}" "07Usuario Solicitante"="${{ env.TAG_07Usuario_Solicitante }}" "08Fecha creacion"="${{ env.TAG_08Fecha_creacion }}" "09IP Privada"="${{ env.TAG_09IP_Privada }}" 10Criticidad="${{ env.TAG_10Criticidad }}" 11Disponibilidad="${{ env.TAG_11Disponibilidad }}" 12Confidencialidad="${{ env.TAG_12Confidencialidad }}"
+          az storage account create --subscription "${{ env.AZURE_SUBSCRIPTION }}" --location ${{ env.AZURE_REGION }} --resource-group ${{ env.AZURE_RG }} --name ${{ env.AZURE_SA_NAME }} --public-network-access Disabled --kind ${{ env.SA_KIND }} --sku ${{ env.SA_SKU }} --tags 01CeCo=${{ env.TAG_01CeCo }} 02NumeroPPM=${{ env.TAG_02NumeroPPM }} "03Nombre aplicacion"="${{ env.TAG_03Nombre_aplicacion }}" 04Ambiente=${{ env.TAG_04Ambiente }} "05Solicitante Financiero"="${{ env.TAG_05Solicitante_Financiero }}" "06Solicitante TI"="${{ env.TAG_06Solicitante_TI }}" "07Usuario Solicitante"="${{ env.TAG_07Usuario_Solicitante }}" "08Fecha creacion"="${{ env.TAG_08Fecha_creacion }}" "09IP Privada"="${{ env.TAG_09IP_Privada }}" 10Criticidad="${{ env.TAG_10Criticidad }}" 11Disponibilidad="${{ env.TAG_11Disponibilidad }}" 12Confidencialidad="${{ env.TAG_12Confidencialidad }}"
